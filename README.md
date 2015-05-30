@@ -1,2 +1,2 @@
 # fleet
-A integration system to manager all vechicles/drivers in a fleet.
+A integration system to manager all vehicles/drivers in a fleet.
