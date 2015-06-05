@@ -1,0 +1,1 @@
+retrieve message from the L1 queue and dispatch it to L2 queue. if the message is a realtime request, then calling the entity service and set its response as the result for mobile. the result will enter the SIGNAL queue
