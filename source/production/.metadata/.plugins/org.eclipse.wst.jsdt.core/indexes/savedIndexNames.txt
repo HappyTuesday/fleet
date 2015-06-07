@@ -1,7 +1,0 @@
-INDEX VERSION 1.3+D:\git\fleet\source\production\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-1620371977.index
-1832843035.index
-3391665411.index
-1175650111.index
-3258627881.index
-3474964864.index
