@@ -5,6 +5,7 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="D:\git\fleet\source\production\server"/>
 			<item value="D:\git\fleet\source\production\server\applications\event.processors"/>
 			<item value="D:\git\fleet\source\production\server\applications\app.services"/>
 		</list>
