@@ -2,25 +2,10 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
-			<item value="fleet"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
-			<item value="fleet.web"/>
-			<item value="fleet.reporting.service"/>
-			<item value="fleet.queue"/>
-			<item value="fleet.messaging.service"/>
-			<item value="fleet.message.processor"/>
-			<item value="fleet.gateway.service"/>
-			<item value="fleet.fleetview.service"/>
-			<item value="fleet.etl"/>
-			<item value="fleet.entity.service"/>
-			<item value="fleet.engine_event.service"/>
-			<item value="fleet.engine_event.processor"/>
-			<item value="fleet.common"/>
-			<item value="fleet.cache"/>
-			<item value="fleet.service"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -63,6 +48,9 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="D:\git\fleet\source\production\server\fleet.daemon"/>
+			<item value="D:\git\fleet\source\production\server\applications\dao"/>
+			<item value="D:\git\fleet\source\production\server\applications\configuration"/>
 			<item value="D:\git\fleet\source\production\server\applications\web"/>
 			<item value="D:\git\fleet\source\production\server\applications\report.service"/>
 			<item value="D:\git\fleet\source\production\server\applications\queue"/>
@@ -75,8 +63,6 @@
 			<item value="D:\git\fleet\source\production\server\applications\engine_event.service"/>
 			<item value="D:\git\fleet\source\production\server\applications\engine_event.processor"/>
 			<item value="D:\git\fleet\source\production\server\applications\common"/>
-			<item value="D:\git\fleet\source\production\server\applications\cache"/>
-			<item value="D:\git\fleet\source\production\server\services\fleet.service"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
