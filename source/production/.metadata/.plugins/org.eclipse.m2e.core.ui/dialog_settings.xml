@@ -2,10 +2,12 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="fleet"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="fleet.entity"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -48,6 +50,7 @@
 	</section>
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="D:\git\fleet\source\production\server\applications\entity"/>
 			<item value="D:\git\fleet\source\production\server\fleet.daemon"/>
 			<item value="D:\git\fleet\source\production\server\applications\dao"/>
 			<item value="D:\git\fleet\source\production\server\applications\configuration"/>
@@ -62,7 +65,6 @@
 			<item value="D:\git\fleet\source\production\server\applications\entity.service"/>
 			<item value="D:\git\fleet\source\production\server\applications\engine_event.service"/>
 			<item value="D:\git\fleet\source\production\server\applications\engine_event.processor"/>
-			<item value="D:\git\fleet\source\production\server\applications\common"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

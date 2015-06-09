@@ -837,3 +837,155 @@ Caused by: org.eclipse.aether.transfer.ArtifactTransferException: Failure to tra
 2015-06-09 00:19:47,067 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2015-06-09 00:19:47,068 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
 2015-06-09 00:19:47,071 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:23,507 [Worker-8] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.entity.service:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\app.service\pom.xml.
+2015-06-09 22:25:23,507 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.entity.service:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\app.service.contract\pom.xml.
+2015-06-09 22:25:24,252 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:24,304 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:24,306 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:24,309 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:24,387 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.cache:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\cache\pom.xml.
+2015-06-09 22:25:24,591 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:24,593 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:24,594 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:24,596 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:24,645 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.common:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\common\pom.xml.
+2015-06-09 22:25:24,655 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:24,658 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:24,659 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:24,662 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:24,733 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.configuration:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\configuration\pom.xml.
+2015-06-09 22:25:24,790 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:24,793 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:24,794 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:24,797 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:24,875 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.service:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\fleet.daemon\pom.xml.
+2015-06-09 22:25:24,888 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:24,891 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\git\fleet\source\production\server\fleet.daemon\src\main\resources
+2015-06-09 22:25:24,893 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:24,896 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\git\fleet\source\production\server\fleet.daemon\src\test\resources
+2015-06-09 22:25:24,995 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.dao:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\dao\pom.xml.
+2015-06-09 22:25:25,062 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,067 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,068 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,071 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,140 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.entity:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\entity\pom.xml.
+2015-06-09 22:25:25,192 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,195 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,196 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,199 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,255 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.etl:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\etl\pom.xml.
+2015-06-09 22:25:25,268 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,272 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,275 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,278 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,338 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.engine_event.processor:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\event.processor\pom.xml.
+2015-06-09 22:25:25,350 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,353 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,354 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,356 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,407 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.gateway.service:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\gateway.service\pom.xml.
+2015-06-09 22:25:25,420 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,423 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,424 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,427 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,479 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.message.processor:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\message.processor\pom.xml.
+2015-06-09 22:25:25,493 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,495 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,496 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,499 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,564 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.queue:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\queue\pom.xml.
+2015-06-09 22:25:25,666 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,669 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,670 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,672 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,767 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.web:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\fleet.web\pom.xml.
+2015-06-09 22:25:25,883 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,887 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:25,889 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:25,892 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:26,817 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.entity.service:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\app.service\pom.xml.
+2015-06-09 22:25:26,853 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.entity.service:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\app.service.contract\pom.xml.
+2015-06-09 22:25:26,890 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.cache:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\cache\pom.xml.
+2015-06-09 22:25:26,925 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.common:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\common\pom.xml.
+2015-06-09 22:25:26,972 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.configuration:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\configuration\pom.xml.
+2015-06-09 22:25:27,013 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.service:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\fleet.daemon\pom.xml.
+2015-06-09 22:25:27,052 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.dao:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\dao\pom.xml.
+2015-06-09 22:25:27,088 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.entity:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\entity\pom.xml.
+2015-06-09 22:25:27,121 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.etl:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\etl\pom.xml.
+2015-06-09 22:25:27,157 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.engine_event.processor:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\event.processor\pom.xml.
+2015-06-09 22:25:27,198 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.gateway.service:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\gateway.service\pom.xml.
+2015-06-09 22:25:27,239 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.message.processor:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\message.processor\pom.xml.
+2015-06-09 22:25:27,284 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.queue:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\queue\pom.xml.
+2015-06-09 22:25:27,330 [Worker-5] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.web:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\fleet.web\pom.xml.
+2015-06-09 22:25:27,661 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:27,687 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:27,688 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:27,691 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:27,696 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:27,699 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:27,700 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:27,703 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:27,709 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:27,712 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:25:27,713 [Worker-9] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:25:27,716 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:30:29,956 [Worker-10] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.entity.service:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\app.service\pom.xml.
+2015-06-09 22:30:29,975 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:30:29,978 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:30:29,979 [Worker-10] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:30:29,981 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:32:17,445 [Worker-11] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.entity.service:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\app.service.contract\pom.xml.
+2015-06-09 22:32:17,462 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:32:17,464 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:32:17,465 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:32:17,468 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:33:09,734 [Worker-12] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.configuration:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\configuration\pom.xml.
+2015-06-09 22:33:09,765 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:33:09,769 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:33:09,771 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:33:09,776 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:33:20,316 [Worker-6] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.entity.service:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\app.service\pom.xml.
+2015-06-09 22:33:20,333 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:33:20,336 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:33:20,337 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:33:20,340 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:34:32,816 [Worker-11] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.service:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\fleet.daemon\pom.xml.
+2015-06-09 22:34:32,834 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:34:32,838 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\git\fleet\source\production\server\fleet.daemon\src\main\resources
+2015-06-09 22:34:32,839 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:34:32,841 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\git\fleet\source\production\server\fleet.daemon\src\test\resources
+2015-06-09 22:34:55,993 [Worker-12] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.dao:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\dao\pom.xml.
+2015-06-09 22:34:56,019 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:34:56,021 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:34:56,022 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:34:56,025 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:35:05,653 [Worker-14] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.entity:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\entity\pom.xml.
+2015-06-09 22:35:05,678 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:35:05,681 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:35:05,682 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:35:05,685 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:35:34,637 [Worker-12] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.etl:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\etl\pom.xml.
+2015-06-09 22:35:34,651 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:35:34,654 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:35:34,654 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:35:34,657 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:35:56,344 [Worker-12] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.engine_event.processor:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\event.processor\pom.xml.
+2015-06-09 22:35:56,359 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:35:56,362 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:35:56,363 [Worker-12] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:35:56,365 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:36:23,141 [Worker-11] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.gateway.service:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\gateway.service\pom.xml.
+2015-06-09 22:36:23,172 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:36:23,174 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:36:23,175 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:36:23,178 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:36:47,733 [Worker-15] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.message.processor:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\applications\message.processor\pom.xml.
+2015-06-09 22:36:47,748 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:36:47,750 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:36:47,751 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:36:47,753 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:38:06,756 [Worker-14] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fleet:fleet.web:0.0.1-SNAPSHOT @ D:\git\fleet\source\production\server\fleet.web\pom.xml.
+2015-06-09 22:38:06,773 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:38:06,778 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-06-09 22:38:06,779 [Worker-14] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (GBK actually) to copy filtered resources, i.e. build is platform dependent!
+2015-06-09 22:38:06,783 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource

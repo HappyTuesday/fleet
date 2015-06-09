@@ -9,5 +9,12 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/fleet.app.service.contract"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/fleet.cache"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/fleet.common"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/fleet.dao"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/fleet.entity"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/fleet.queue"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/fleet.configuration"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

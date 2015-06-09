@@ -32,5 +32,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/fleet.cache"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/fleet.dao"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/fleet.entity"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
