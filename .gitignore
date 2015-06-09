@@ -12,5 +12,4 @@
 hs_err_pid*
 
 # Eclipse running files
-!source/production/.metadata/.plugins/org.eclipse.core.resources/.projects/
 source/production/.metadata/
