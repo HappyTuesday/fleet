@@ -6,9 +6,7 @@ CREATE TABLE incremental_applied_history(
 	version long not null,
 );
 
-CREATE SEQUENCE incremental_applied_history_sid_seq START WITH 1 INCREMENT BY 1;
-
-ALTER SEQUENCE OWNED BY incremental_applied_history.sid;
+CREATE SEQUENCE incremental_applied_history_sid_seq START WITH 1 INCREMENT BY 1 OWNED BY incremental_applied_history;
 
 ALTER TABLE ONLY incremental_applied_history ALTER COLUMN SET DEFAULT nextval('incremental_applied_history_sid_seq');
 
