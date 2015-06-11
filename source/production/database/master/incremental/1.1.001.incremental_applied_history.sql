@@ -1,9 +1,8 @@
 ---- create table incremental_applied_history
 CREATE TABLE incremental_applied_history(
 	sid long not null,
+	file_name varchar not null,
 	applied_date date not null,
-	incremental_file_name varchar not null,
-	version long not null,
 );
 
 CREATE SEQUENCE incremental_applied_history_sid_seq START WITH 1 INCREMENT BY 1 OWNED BY incremental_applied_history;
