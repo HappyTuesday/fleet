@@ -1,5 +1,7 @@
 package fleet.entity;
 
+import fleet.queue.QueueMessage;
+
 public class ClientRequestQueueMessage extends QueueMessage{
 
 	private static final long serialVersionUID = 1L;
