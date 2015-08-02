@@ -109,7 +109,7 @@ AutoCompleteWithPopup.AutoComplete = React.createClass({
     this.setState({filter: {key: newFilterKey}, showAlternativeViewer: true});
   },
   onAddSelection: function(item){
-    this.setState({showAlternativeViewer: false});
+    this.setState({showAlternativeViewer: false, filter: _.merge(this.state.filter,{key: ''})});
     this.props.onSelectionChange(_.union(this.props.selection,[item]));
   },
   onRemoveSelection: function(item,e){

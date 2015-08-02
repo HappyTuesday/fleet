@@ -1,16 +1,22 @@
 var StateBindToPropsMinxin = function(){
-  var propNames = Arguments;
-  var bind = function(){
-    var newState = {};
-    for(var i in propNames){
-      var prop = propNames[i];
-      newState[prop] = this.props[prop];
-    }
-    this.setState(newState);
-  };
+  var propNames = arguments;
   return {
-    componentWillMount: bind,
-    componentWillReceiveProps: bind
+    componentWillMount: function(){
+      var newState = {};
+      for(var i in propNames){
+        var prop = propNames[i];
+        newState[prop] = this.props[prop];
+      }
+      this.setState(newState);
+    },
+    componentWillReceiveProps: function(nextProps){
+      var newState = {};
+      for(var i in propNames){
+        var prop = propNames[i];
+        newState[prop] = nextProps[prop];
+      }
+      this.setState(newState);
+    }
   };
 };
 
@@ -33,7 +39,9 @@ var SelectableMixin = {
       if(itemView.props.selected){
         newSelection = _.except(this.state.selection,[itemView.props.item]);
       }else{
-        newSelection = _.union(this.state.selection,[itemView.props.item]);
+        newSelection = this.props.items.filter(function(item){
+          return _.any(this.state.selection,item) || item == itemView.props.item;
+        }.bind(this));
       }
       this.setState({selection: newSelection});
 
@@ -44,7 +52,7 @@ var SelectableMixin = {
   }
 };
 
-var DataViewer = React.createClass({
+var DataViewer = React.createClass({displayName: "DataViewer",
   getInitialState: function(){
     return {
       loadingStatus: 'init',
@@ -64,7 +72,7 @@ var DataViewer = React.createClass({
       filter: {},
       pageSize: 10,
       viewFactory: function(props){
-        return <PagingView {...props} />
+        return React.createElement(PagingView, React.__spread({},  props))
       }
     };
   },
@@ -76,7 +84,8 @@ var DataViewer = React.createClass({
     this.loadData(0,nextProps);
   },
   render: function(){
-    console.debug("render: DataViewer");
+    console.debug("render DataViewer");
+    //console.debug(this.state.items);
     var view = this.props.viewFactory({
       items: this.state.items,
       pageIndex: this.state.pageIndex,
@@ -85,10 +94,10 @@ var DataViewer = React.createClass({
       onNextPage: this.onNextPage
     });
     return (
-      <div>
-        <ProgressBar status={this.state.loadingStatus} />
-        {view}
-      </div>
+      React.createElement("div", {className: "data-viewer"}, 
+        React.createElement(ProgressBar, {status: this.state.loadingStatus}), 
+        view
+      )
     );
   },
   selection: function(){
@@ -116,7 +125,7 @@ var DataViewer = React.createClass({
   }
 });
 
-var PagingView = React.createClass({
+var PagingView = React.createClass({displayName: "PagingView",
   propTypes: {
     viewFactory: React.PropTypes.func,
     paginationViewFactory: React.PropTypes.func,
@@ -129,15 +138,16 @@ var PagingView = React.createClass({
   getDefaultProps: function(){
     return {
       viewFactory: function(props){
-        return (<List {...props} />)
+        return (React.createElement(List, React.__spread({},  props)))
       },
       paginationViewFactory: function(props){
-        return (<Pagination {...props} />);
+        return (React.createElement(Pagination, React.__spread({},  props)));
       }
     };
   },
   render: function(){
     console.debug("render PagingView");
+    //console.debug(this.props);
     var view = this.props.viewFactory({items: this.props.items});
     var paginationView = this.props.paginationViewFactory({
       pageIndex: this.props.pageIndex,
@@ -146,10 +156,10 @@ var PagingView = React.createClass({
       onNextPage: this.props.onNextPage
     });
     return (
-      <div>
-        {view}
-        {paginationView}
-      </div>
+      React.createElement("div", {className: "paging-view"}, 
+        view, 
+        paginationView
+      )
     );
   },
   selection: function(){
@@ -160,7 +170,7 @@ var PagingView = React.createClass({
   }
 });
 
-var PagedLoadingView = React.createClass({
+var PagedLoadingView = React.createClass({displayName: "PagedLoadingView",
   getInitialState: function(){
     return {
       items: [],
@@ -178,7 +188,7 @@ var PagedLoadingView = React.createClass({
   getDefaultProps: function(){
     return {
       viewFactory: function(props){
-        return (<List {...props} />);
+        return (React.createElement(List, React.__spread({},  props)));
       }
     };
   },
@@ -202,16 +212,16 @@ var PagedLoadingView = React.createClass({
     console.debug("render PagedLoadingView");
     var morebtn;
     if((this.props.pageIndex+1) * this.props.pageSize < this.props.totalCount){
-      morebtn = <button className="paged-loading-view-more" onClick={this.onMoreItems}>more...</button>;
+      morebtn = React.createElement("button", {className: "more", onClick: this.onMoreItems}, "more...");
     }
     var view = this.props.viewFactory({
       items: this.state.items,
       children: morebtn
     });
     return (
-      <div>
-        {view}
-      </div>
+      React.createElement("div", {className: "paged-loading-view"}, 
+        view
+      )
     );
   },
   selection: function(){
@@ -225,7 +235,7 @@ var PagedLoadingView = React.createClass({
   }
 });
 
-var List = React.createClass({
+var List = React.createClass({displayName: "List",
   mixins: [SelectableMixin,StateBindToPropsMinxin('selection')],
   propTypes: {
     items: React.PropTypes.array,
@@ -255,23 +265,26 @@ var List = React.createClass({
     console.debug("render List");
     var list = _.except(this.props.items,this.props.excludeItems).map(function(item){
       return (
-        <List.Item key={this.props.getItemKey(item)} item={item}
-          selected={_.any(this.state.selection,item)} onClick={this.onItemClick}/>
+        React.createElement(List.Item, {key: this.props.getItemKey(item), item: item, 
+          selected: _.any(this.state.selection,item), 
+          onClick: this.onItemClick}, 
+          this.props.getItemView(item,{selected: _.any(this.props.selection,item)})
+        )
       );
     }.bind(this));
     var childrenWrapper = React.Children.map(this.props.children,function(child){
-      return <List.Item key="children-wrapper" selectable={false}>{child}</List.Item>;
+      return React.createElement(List.Item, {key: "children-wrapper", selectable: false}, child);
     });
     return (
-      <ul className="list-view">
-        {list}
-        {childrenWrapper}
-      </ul>
+      React.createElement("ul", {className: "list-view"}, 
+        list, 
+        childrenWrapper
+      )
     );
   }
 });
 
-List.Item = React.createClass({
+List.Item = React.createClass({displayName: "Item",
   propTypes: {
     item: React.PropTypes.any,
     selected: React.PropTypes.bool,
@@ -290,9 +303,9 @@ List.Item = React.createClass({
       selectable: this.props.selectable
     });
     return (
-      <li className={classes} onClick={this.props.onClick ? this.onClick : null}>
-        {this.props.children}
-      </li>
+      React.createElement("li", {className: classes, onClick: this.props.onClick ? this.onClick : null}, 
+        this.props.children
+      )
     );
   },
   onClick: function(e){
@@ -300,7 +313,7 @@ List.Item = React.createClass({
   }
 });
 
-var Table = React.createClass({
+var Table = React.createClass({displayName: "Table",
   mixins: [SelectableMixin,StateBindToPropsMinxin('selection')],
   propTypes: {
     items: React.PropTypes.array,
@@ -330,32 +343,41 @@ var Table = React.createClass({
   },
   render: function(){
     console.debug("render Table");
-    var list = _.except(this.props.items,this.props.excludeItems).map(function(item){
+    //console.debug(this.props);
+    var list = _.except(this.props.items, this.props.excludeItems).map(function(item){
       return (
-          <Table.Row key={this.props.getItemKey(item)} item={item}
-            columns={this.props.columns} getCellView={this.props.getCellView}
-            onItemClick={this.onItemClick} onCellClick={this.onCellClick}/>
-      );
+        React.createElement(Table.Row, {key: this.props.getItemKey(item), item: item, 
+          selected: _.any(this.props.selection,item), 
+          columns: this.props.columns, 
+          getColumnKey: this.props.getColumnKey, 
+          getCellView: this.props.getCellView, 
+          onClick: this.props.onItemClick ? this.onItemClick : null, 
+          onCellClick: this.props.onCellClick ? this.onCellClick : null}
+        ));
     }.bind(this));
     var childrenWrapper = React.Children.map(this.props.children,function(child){
       return (
-        <Table.Row key="children-wrapper" item={child} colspan={this.props.columns.length}
-          columns={[{}]} selectable={false} getCellView={this.renderCellForChildren}/>);
+        React.createElement(Table.Row, {key: "children-wrapper", item: child, 
+          colspan: this.props.columns.length, 
+          columns: [{}], 
+          selectable: false, 
+          getCellView: this.renderCellForChildren}
+        ));
     });
     return (
-      <table className="table-view">
-        <thead>
-          <Table.HeadRow
-            columns={this.props.columns}
-            getColumnKey={this.props.getColumnKey}
-            getHeadView={this.props.getHeadView}
-            onHeadClick={this.onHeadClick} />
-        </thead>
-        <tbody>
-          {list}
-          {childrenWrapper}
-        <tbody>
-      </table>
+      React.createElement("table", {className: "table-view"}, 
+        React.createElement("thead", null, 
+          React.createElement(Table.HeadRow, {
+            columns: this.props.columns, 
+            getColumnKey: this.props.getColumnKey, 
+            getHeadView: this.props.getHeadView, 
+            onHeadClick: this.props.onHeadClick ? this.onHeadClick : null})
+        ), 
+        React.createElement("tbody", null, 
+          list, 
+          childrenWrapper
+        )
+      )
     );
   },
   onHeadClick: function(headCell,e){
@@ -366,10 +388,13 @@ var Table = React.createClass({
   },
   renderCellForChildren: function(item,column){
     return item;
+  },
+  getColumnKeyForChildren: function(){
+    return "children-wrapper";
   }
 });
 
-Table.HeadRow = React.createClass({
+Table.HeadRow = React.createClass({displayName: "HeadRow",
   propTypes: {
     columns: React.PropTypes.array.isRequired,
     getColumnKey: React.PropTypes.func.isRequired,
@@ -379,28 +404,29 @@ Table.HeadRow = React.createClass({
   render: function(){
     var list = this.props.columns.map(function(column){
       return (
-        <Table.HeadCell key={this.props.getColumnKey(column)} onClick={this.props.onHeadClick ? this.onHeadClick : null}>
-          {this.props.getHeadView(column)}
-        </Table.HeadCell>
+        React.createElement(Table.HeadCell, {key: this.props.getColumnKey(column), column: column, 
+          onClick: this.props.onHeadClick ? this.onHeadClick : null}, 
+          this.props.getHeadView(column)
+        )
       );
     }.bind(this));
     return (
-      <tr>{list}</tr>
+      React.createElement("tr", null, list)
     );
   },
   onHeadClick: function(headCell,e){
-    this.props.onHeadClick(headCell.props.column,e);
+    this.props.onHeadClick(headCell,e);
   }
 });
 
-Table.HeadCell = React.createClass({
+Table.HeadCell = React.createClass({displayName: "HeadCell",
   propTypes: {
     column: React.PropTypes.any.isRequired,
     onClick: React.PropTypes.func
   },
   render: function(){
     return (
-      <th onClick={this.props.onClick ? this.onClick : null}>{this.props.children}</th>
+      React.createElement("th", {onClick: this.props.onClick ? this.onClick : null}, this.props.children)
     );
   },
   onClick: function(){
@@ -408,11 +434,12 @@ Table.HeadCell = React.createClass({
   }
 });
 
-Table.Row = React.createClass({
+Table.Row = React.createClass({displayName: "Row",
   propTypes: {
-    item: React.PropTypes.any,
-    columns: React.Proptypes.array,
-    getCellView: React.PropTypes.func,
+    item: React.PropTypes.any.isRequired,
+    columns: React.PropTypes.array.isRequired,
+    getColumnKey: React.PropTypes.func.isRequired,
+    getCellView: React.PropTypes.func.isRequired,
     selectable: React.PropTypes.bool,
     selected: React.PropTypes.bool,
     onClick: React.PropTypes.func,
@@ -426,19 +453,22 @@ Table.Row = React.createClass({
     };
   },
   render: function(){
+    //console.debug("render Table.Row");
+    //console.debug(this.props);
     var classes = React.addons.classSet({
       selected: this.props.selected,
       selectable: this.props.selectable
     });
     var list = this.props.columns.map(function(column){
+      //console.debug("column key="+this.props.getColumnKey(column));
       return (
-        <Table.Cell className={classes} item={this.props.item} column={column} selected={this.props.selected}
-          onClick={this.props.onCellClick ? this.onCellClick : null} colspan={this.props.colspan}>
-          {this.props.children}
-        </Table.Cell>
+        React.createElement(Table.Cell, {key: this.props.getColumnKey(column), className: classes, item: this.props.item, column: column, selected: this.props.selected, 
+          onClick: this.props.onCellClick ? this.onCellClick : null, colspan: this.props.colspan}, 
+          this.props.getCellView(this.props.item,column,{selected: this.props.selected})
+        )
       );
-    });
-    return (<tr onClick={this.props.onClick ? this.onClick : null} className={classes}>{list}</tr>);
+    }.bind(this));
+    return (React.createElement("tr", {onClick: this.props.onClick ? this.onClick : null, className: classes}, list));
   },
   onClick: function(e){
     this.props.onClick(this,e);
@@ -448,19 +478,20 @@ Table.Row = React.createClass({
   }
 });
 
-Table.Cell = React.createClass({
+Table.Cell = React.createClass({displayName: "Cell",
   propTypes: {
     column: React.PropTypes.any.isRequired,
     item: React.PropTypes.any.isRequired,
     onClick: React.PropTypes.func,
-    colspan: React.Proptypes.number,
-    selected: React.PropTypes.selected
+    colspan: React.PropTypes.number,
+    selected: React.PropTypes.bool
   },
   render: function(){
     return (
-      <td onClick={this.props.onClick ? this.onClick : null} colspan={this.props.colspan}>
-        {this.props.getCellView(this.props.item,this.props.column,{selected: this.props.selected})}
-      </td>
+      React.createElement("td", {colspan: this.props.colspan, 
+        onClick: this.props.onClick ? this.onClick : null}, 
+        this.props.children
+      )
     );
   },
   onClick: function(e){
@@ -468,7 +499,7 @@ Table.Cell = React.createClass({
   }
 });
 
-var ProgressBar = React.createClass({
+var ProgressBar = React.createClass({displayName: "ProgressBar",
   propTypes: {
     status: React.PropTypes.oneOf(['init','loading','loaded'])
   },
@@ -479,13 +510,13 @@ var ProgressBar = React.createClass({
   },
   render: function(){
     return (
-      <progress className={this.props.status} />
+      React.createElement("progress", {className: this.props.status})
     );
   }
 });
 
-var ThrottledInput = React.createClass({
-  mixins: [StateBindToPropsMinxin('value')]
+var ThrottledInput = React.createClass({displayName: "ThrottledInput",
+  mixins: [StateBindToPropsMinxin("value")],
   getInitialState: function(){
     return {
       value: ''
@@ -499,20 +530,22 @@ var ThrottledInput = React.createClass({
     this.onChangeThrottled = throttle(1000,this.onChangeThrottled).bind(this);
   },
   render: function(){
+    console.debug("render ThrottledInput");
     return (
-      <input onChange={this.onChange} value={this.props.value} />
+      React.createElement("input", {className: "throttled-input", onChange: this.onChange, value: this.state.value})
     );
   },
   onChange: function(e){
-    this.setState({value: e.target.value});
-    this.onChangeThrottled(this.state.value);
+    var newValue = e.target.value
+    this.setState({value: newValue});
+    this.onChangeThrottled(newValue);
   },
   onChangeThrottled: function(value){
     this.props.onChange(value);
   }
 });
 
-var Pagination = React.createClass({
+var Pagination = React.createClass({displayName: "Pagination",
   propTypes: {
     viewWidth: React.PropTypes.number,
     pageIndex: React.PropTypes.number.isRequired,
@@ -528,25 +561,25 @@ var Pagination = React.createClass({
   render: function(){
     var totalPageCount = Math.ceil(this.props.totalCount / this.props.pageSize);
     var start = this.props.pageIndex - this.props.pageIndex % this.props.viewWidth;
-    var count = Math.min(start + this.props.viewWidth, totalPageCount) - start;
+    var count = Math.min(this.props.viewWidth, totalPageCount - start);
     var newItem = function(pageIndex,content){
       return (
-        <Pagination.Item key={pageIndex} value={pageIndex} content={content} selected={pageIndex==this.props.pageIndex} onClick={this.onNextPage} />
+        React.createElement(Pagination.Item, {key: pageIndex, value: pageIndex, content: content, selected: pageIndex==this.props.pageIndex, onClick: this.onNextPage})
       );
     }.bind(this);
     var list = _.range(start,count).map(function(pageIndex){
       return newItem(pageIndex,pageIndex + 1);
     });
     if(start > 0){
-      list.shift(newItem(start-1,"<<"));
+      list.unshift(newItem(start-1,"<<"));
     }
-    if(start + count < this.props.totalPageCount){
+    if(start + count < totalPageCount){
       list.push(newItem(start + count,">>"));
     }
     return (
-      <ul className="pagination">
-        {list}
-      </ul>
+      React.createElement("ul", {className: "pagination"}, 
+        list
+      )
     );
   },
   onNextPage: function(viewItem){
@@ -555,7 +588,7 @@ var Pagination = React.createClass({
   }
 });
 
-Pagination.Item = React.createClass({
+Pagination.Item = React.createClass({displayName: "Item",
   propTypes: {
     content: React.PropTypes.any.isRequired,
     value: React.PropTypes.number.isRequired,
@@ -568,7 +601,7 @@ Pagination.Item = React.createClass({
     };
   },
   render: function(){
-    return <li className={this.props.selected?'active':''}><a href="#" onClick={this.onClick}>{this.props.content}</a></li>;
+    return React.createElement("li", {className: this.props.selected?'active':''}, React.createElement("a", {href: "#", onClick: this.onClick}, this.props.content));
   },
   onClick: function(e){
     e.preventDefault();

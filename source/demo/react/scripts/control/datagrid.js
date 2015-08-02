@@ -1,4 +1,4 @@
-var DefaultDataGrid = React.createClass({
+var DefaultDataGrid = React.createClass({displayName: "DefaultDataGrid",
   propTypes: {
     dataSource: React.PropTypes.func.isRequired,
     columns: React.PropTypes.array.isRequired,
@@ -15,10 +15,10 @@ var DefaultDataGrid = React.createClass({
     console.debug("render DefaultDataGrid");
     //console.debug(this.props);
     return (
-      <DataGrid dataSource={this.props.dataSource} columns={this.props.columns}
-        getItemKey={this.getItemKey} getColumnKey={this.getColumnKey}
-        getHeadView={this.getHeadView} getColumnText={this.getColumnText} getCellView={this.getCellView}
-        searchableColumns={this.getSearchableColumns()} sortableColumns={this.getSortableColumns()}/>
+      React.createElement(DataGrid, {dataSource: this.props.dataSource, columns: this.props.columns, 
+        getItemKey: this.getItemKey, getColumnKey: this.getColumnKey, 
+        getHeadView: this.getHeadView, getColumnText: this.getColumnText, getCellView: this.getCellView, 
+        searchableColumns: this.getSearchableColumns(), sortableColumns: this.getSortableColumns()})
     );
   },
   getSearchableColumns: function(){
@@ -38,7 +38,7 @@ var DefaultDataGrid = React.createClass({
     return column.name;
   },
   getHeadView: function(column){
-    return (<span>{column.title || column.name}</span>);
+    return (React.createElement("span", null, column.title || column.name));
   },
   getColumnText: function(column){
     return column.title || column.name;
@@ -48,12 +48,12 @@ var DefaultDataGrid = React.createClass({
     if(render){
       return render(item[column.name],item,column);
     }else{
-      return (<span>{String(item[column.name])}</span>);
+      return (React.createElement("span", null, String(item[column.name])));
     }
   }
 });
 
-var DataGrid = React.createClass({
+var DataGrid = React.createClass({displayName: "DataGrid",
   getInitialState: function(){
     return {
       shownColumns: [],
@@ -83,27 +83,27 @@ var DataGrid = React.createClass({
     console.debug("render DataGrid");
     //console.debug(this.props);
     return (
-      <div className="data-grid">
-        <DataViewer dataSource={this.props.dataSource} filter={this.state.filter}
-          pageSize={this.state.filter.pageSize} viewFactory={this.renderPagingView} />
-      </div>
+      React.createElement("div", {className: "data-grid"}, 
+        React.createElement(DataViewer, {dataSource: this.props.dataSource, filter: this.state.filter, 
+          pageSize: this.state.filter.pageSize, viewFactory: this.renderPagingView})
+      )
     );
   },
   renderPagingView: function(props){
     return (
-      <PagingView {...props}
-        viewFactory={this.renderInternalView}
-        paginationViewFactory={this.renderControlPanelView}
-      />);
+      React.createElement(PagingView, React.__spread({},  props, 
+        {viewFactory: this.renderInternalView, 
+        paginationViewFactory: this.renderControlPanelView})
+      ));
   },
   renderInternalView: function(props){
     return (
-      <Table {...props} getItemKey={this.props.getItemKey}
-        columns={this.state.shownColumns}
-        getColumnKey={this.props.getColumnKey}
-        getHeadView={this.renderColumnHead}
-        getCellView={this.props.getCellView}
-      />);
+      React.createElement(Table, React.__spread({},  props, {getItemKey: this.props.getItemKey, 
+        columns: this.state.shownColumns, 
+        getColumnKey: this.props.getColumnKey, 
+        getHeadView: this.renderColumnHead, 
+        getCellView: this.props.getCellView})
+      ));
   },
   renderColumnHead: function(column){
     var dragProps = {
@@ -113,27 +113,27 @@ var DataGrid = React.createClass({
       onColumnDrop: this.onColumnDrop
     };
     return (
-      <DataGrid.ColumnHead currentColumn={column} {...dragProps}
-        shownColumns={this.state.shownColumns}
-        columns={this.props.columns}
-        getColumnKey={this.props.getColumnKey}
-        getHeadView={this.props.getHeadView}
-        getColumnText={this.props.getColumnText}
-        onShownColumnsChange={this.changeShownColumns}
-        onFilterChange={this.onFilterChange}
-        filter={this.state.filter}
-        sortable={this.props.sortableColumns && _.any(this.props.sortableColumns,column)}
-      />);
+      React.createElement(DataGrid.ColumnHead, React.__spread({currentColumn: column},  dragProps, 
+        {shownColumns: this.state.shownColumns, 
+        columns: this.props.columns, 
+        getColumnKey: this.props.getColumnKey, 
+        getHeadView: this.props.getHeadView, 
+        getColumnText: this.props.getColumnText, 
+        onShownColumnsChange: this.changeShownColumns, 
+        onFilterChange: this.onFilterChange, 
+        filter: this.state.filter, 
+        sortable: this.props.sortableColumns && _.any(this.props.sortableColumns,column)})
+      ));
   },
   renderControlPanelView: function(props){
     return (
-      <DataGrid.ControlPanel filter={this.state.filter}
-        paginationProps={props}
-        searchableColumns={this.props.searchableColumns}
-        getColumnKey={this.props.getColumnKey}
-        getColumnText={this.props.getColumnText}
-        onFilterChange={this.onFilterChange}
-      />);
+      React.createElement(DataGrid.ControlPanel, {filter: this.state.filter, 
+        paginationProps: props, 
+        searchableColumns: this.props.searchableColumns, 
+        getColumnKey: this.props.getColumnKey, 
+        getColumnText: this.props.getColumnText, 
+        onFilterChange: this.onFilterChange}
+      ));
   },
   changeShownColumns: function(newShownColumns){
     this.setState({shownColumns: newShownColumns});
@@ -181,7 +181,7 @@ var DataGrid = React.createClass({
   }
 });
 
-DataGrid.ColumnHead = React.createClass({
+DataGrid.ColumnHead = React.createClass({displayName: "ColumnHead",
   propTypes: {
     currentColumn: React.PropTypes.any.isRequired,
     shownColumns: React.PropTypes.array.isRequired,
@@ -215,19 +215,19 @@ DataGrid.ColumnHead = React.createClass({
       down: this.isSorting() && this.props.filter.desc
     });
     return (
-      <div className="column-head" {...dragProps}>
-        <DataGrid.ColumnSelectPanel
-          currentColumn={this.props.currentColumn}
-          shownColumns={this.props.shownColumns}
-          columns={this.props.columns}
-          getColumnKey={this.props.getColumnKey}
-          getColumnText={this.props.getColumnText}
-          onShownColumnsChange={this.props.onShownColumnsChange}
-        />
-        <div className={sortClasses} onClick={this.props.sortable ? this.onSort : null}>
-          {this.props.getHeadView(this.props.currentColumn)}
-        </div>
-      </div>
+      React.createElement("div", React.__spread({className: "column-head"},  dragProps), 
+        React.createElement(DataGrid.ColumnSelectPanel, {
+          currentColumn: this.props.currentColumn, 
+          shownColumns: this.props.shownColumns, 
+          columns: this.props.columns, 
+          getColumnKey: this.props.getColumnKey, 
+          getColumnText: this.props.getColumnText, 
+          onShownColumnsChange: this.props.onShownColumnsChange}
+        ), 
+        React.createElement("div", {className: sortClasses, onClick: this.props.sortable ? this.onSort : null}, 
+          this.props.getHeadView(this.props.currentColumn)
+        )
+      )
     );
   },
   isSorting: function(){
@@ -251,7 +251,7 @@ DataGrid.ColumnHead = React.createClass({
   }
 });
 
-DataGrid.ColumnSelectPanel = React.createClass({
+DataGrid.ColumnSelectPanel = React.createClass({displayName: "ColumnSelectPanel",
   getInitialState: function(){
     return {
       showList: false
@@ -269,11 +269,11 @@ DataGrid.ColumnSelectPanel = React.createClass({
     var listView;
     if(this.state.showList){
       listView = (
-        <List items={this.props.columns}
-          selection={this.props.shownColumns}
-          getItemKey={this.props.getColumnKey}
-          getItemView={this.renderOption}
-          onSelectionChange={this.onShownColumnsChange} />
+        React.createElement(List, {items: this.props.columns, 
+          selection: this.props.shownColumns, 
+          getItemKey: this.props.getColumnKey, 
+          getItemView: this.renderOption, 
+          onSelectionChange: this.onShownColumnsChange})
       );
     }
     var columnSelectClasses = React.addons.classSet({
@@ -281,10 +281,10 @@ DataGrid.ColumnSelectPanel = React.createClass({
       'expanded': this.state.showList
     });
     return (
-      <div className={columnSelectClasses}>
-        <button className="toggle" onClick={this.onToggleShowList}>.</button>
-        {listView}
-      </div>
+      React.createElement("div", {className: columnSelectClasses}, 
+        React.createElement("button", {className: "toggle", onClick: this.onToggleShowList}, "."), 
+        listView
+      )
     );
   },
   onShownColumnsChange: function(newSelection){
@@ -292,14 +292,14 @@ DataGrid.ColumnSelectPanel = React.createClass({
     this.setState({showList: false});
   },
   renderOption: function(column,args){
-    return (<span>{this.props.getColumnText(column)}</span>);
+    return (React.createElement("span", null, this.props.getColumnText(column)));
   },
   onToggleShowList: function(){
     this.setState({showList: !this.state.showList});
   }
 });
 
-DataGrid.ControlPanel = React.createClass({
+DataGrid.ControlPanel = React.createClass({displayName: "ControlPanel",
   getInitialState: function(){
     return {
       showFilterPanel: false
@@ -318,20 +318,20 @@ DataGrid.ControlPanel = React.createClass({
     console.debug(this.state);
     var filterPanel;
     if(this.state.showFilterPanel && this.props.searchableColumns && this.props.searchableColumns.length > 0){
-      filterPanel = (<DataGrid.FilterPanel key="filterPanel" {...this.props} />);
+      filterPanel = (React.createElement(DataGrid.FilterPanel, React.__spread({key: "filterPanel"},  this.props)));
     }
     return (
-      <div className="control-panel">
-        <React.addons.CSSTransitionGroup transitionName="filter-panel">
-          {filterPanel}
-        </React.addons.CSSTransitionGroup>
-        <div className="pagination-panel">
-          <button onClick={this.onToggleShowFilterPanel} className="search">.</button>
-          <span>Search</span>
-          <DataGrid.Pagination {...this.props.paginationProps} />
-          <DataGrid.Summary {...this.props.paginationProps} />
-        </div>
-      </div>
+      React.createElement("div", {className: "control-panel"}, 
+        React.createElement(React.addons.CSSTransitionGroup, {transitionName: "filter-panel"}, 
+          filterPanel
+        ), 
+        React.createElement("div", {className: "pagination-panel"}, 
+          React.createElement("button", {onClick: this.onToggleShowFilterPanel, className: "search"}, "."), 
+          React.createElement("span", null, "Search"), 
+          React.createElement(DataGrid.Pagination, React.__spread({},  this.props.paginationProps)), 
+          React.createElement(DataGrid.Summary, React.__spread({},  this.props.paginationProps))
+        )
+      )
     );
   },
   onToggleShowFilterPanel: function(){
@@ -339,7 +339,7 @@ DataGrid.ControlPanel = React.createClass({
   }
 });
 
-DataGrid.FilterPanel = React.createClass({
+DataGrid.FilterPanel = React.createClass({displayName: "FilterPanel",
   propTypes: {
     filter: React.PropTypes.object.isRequired,
     onFilterChange: React.PropTypes.func.isRequired,
@@ -350,18 +350,18 @@ DataGrid.FilterPanel = React.createClass({
   render: function(){
     var alternativeOptions = this.props.searchableColumns.map(function(column){
       var columnKey = this.props.getColumnKey(column);
-      return (<option key={columnKey} value={columnKey}>{this.props.getColumnText(column)}</option>);
+      return (React.createElement("option", {key: columnKey, value: columnKey}, this.props.getColumnText(column)));
     }.bind(this));
     return (
-      <div className="filter-panel">
-        <div className="wrapper">
-          <span>Find</span>
-          <ThrottledInput value={this.props.filter.key} onChange={this.onFilterKeyChange} />
-          <select value={this.getFilterColumn()} onChange={this.onFilterColumnChange}>
-            {alternativeOptions}
-          </select>
-        </div>
-      </div>
+      React.createElement("div", {className: "filter-panel"}, 
+        React.createElement("div", {className: "wrapper"}, 
+          React.createElement("span", null, "Find"), 
+          React.createElement(ThrottledInput, {value: this.props.filter.key, onChange: this.onFilterKeyChange}), 
+          React.createElement("select", {value: this.getFilterColumn(), onChange: this.onFilterColumnChange}, 
+            alternativeOptions
+          )
+        )
+      )
     );
   },
   getFilterColumn: function(){
@@ -378,7 +378,7 @@ DataGrid.FilterPanel = React.createClass({
   }
 });
 
-DataGrid.Pagination = React.createClass({
+DataGrid.Pagination = React.createClass({displayName: "Pagination",
   propTypes: {
     pageIndex: React.PropTypes.number.isRequired,
     pageSize: React.PropTypes.number.isRequired,
@@ -389,16 +389,16 @@ DataGrid.Pagination = React.createClass({
     console.debug("render DataGrid.Pagination");
     //console.debug(this.props);
     return (
-      <span className="pagination-view">
-        <button className="first" onClick={this.onFirstPage}>{'<<'}</button>
-        <button className="previous" onClick={this.onPreviousPage}>{'<'}</button>
-        <span>Page</span>
-        <ThrottledInput onChange={this.onInputPageNumber} value={(this.props.pageIndex+1).toString()}/>
-        <span>of {this.totalPage()}</span>
-        <button className="next" onClick={this.onNextPage}>{'>'}</button>
-        <button className="last" onClick={this.onLastPage}>{'>>'}</button>
-        <button className="refresh" onClick={this.onRefresh}>.</button>
-      </span>
+      React.createElement("span", {className: "pagination-view"}, 
+        React.createElement("button", {className: "first", onClick: this.onFirstPage}, '<<'), 
+        React.createElement("button", {className: "previous", onClick: this.onPreviousPage}, '<'), 
+        React.createElement("span", null, "Page"), 
+        React.createElement(ThrottledInput, {onChange: this.onInputPageNumber, value: (this.props.pageIndex+1).toString()}), 
+        React.createElement("span", null, "of ", this.totalPage()), 
+        React.createElement("button", {className: "next", onClick: this.onNextPage}, '>'), 
+        React.createElement("button", {className: "last", onClick: this.onLastPage}, '>>'), 
+        React.createElement("button", {className: "refresh", onClick: this.onRefresh}, ".")
+      )
     );
   },
   totalPage: function(){
@@ -429,7 +429,7 @@ DataGrid.Pagination = React.createClass({
   }
 });
 
-DataGrid.Summary = React.createClass({
+DataGrid.Summary = React.createClass({displayName: "Summary",
   propTypes: {
     pageIndex: React.PropTypes.number.isRequired,
     pageSize: React.PropTypes.number.isRequired,
@@ -438,7 +438,7 @@ DataGrid.Summary = React.createClass({
   render: function(){
     var i = this.props.pageIndex, s = this.props.pageSize, c = this.props.totalCount;
     return (
-      <span className="summary">Displaying {i*s + 1} to {Math.min((i+1)*s,c)} of {c} items</span>
+      React.createElement("span", {className: "summary"}, "Displaying ", i*s + 1, " to ", Math.min((i+1)*s,c), " of ", c, " items")
     );
   }
 });

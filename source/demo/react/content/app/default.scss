@@ -1,0 +1,19 @@
+@import "../lib/bootstrap";
+@import "../control/autocomplete";
+@import "../control/datagrid";
+
+body {
+  background: rgb(241,241,241);
+}
+
+.demo {
+  font-size: 12px;
+  font-family: Arial;
+
+  width: 800px;
+  margin: 20px auto;
+
+  padding: 10px;
+  background: white;
+  border: 1px dashed rgb(200,200,200);
+}

@@ -1,0 +1,261 @@
+@import "dataviewer";
+
+@mixin no-content {
+  color: transparent;
+}
+
+@mixin inset-box-shadow($color,$offset:2px,$radius:2px) {
+  box-shadow:
+    inset $offset 0 $radius $color,
+    inset 0 $offset $radius $color,
+    inset -$offset 0 $radius $color,
+    inset 0 -$offset $radius $color;
+}
+
+.data-grid {
+  $head-background-color: #9FB100;
+
+  .data-viewer {
+    progress {
+      height: 2px;
+      display: none;
+      width: 100%;
+    }
+
+    progress.loading {
+      display: block;
+    }
+
+    .table-view {
+      $border-color: #9C9C9C;
+      $row-background-color: #FFFFFF;
+      $row-alternative-background-color: #E0E0DF;
+
+      border-collapse: collapse;
+      width: 100%;
+
+      >thead>tr {
+        background-color: $head-background-color;
+      }
+
+      >tbody>tr:nth-child(2n+1) {
+        background-color: $row-background-color;
+      }
+
+      >tbody>tr:nth-child(2n+2) {
+        background-color: $row-alternative-background-color;
+      }
+
+      >tbody>tr>td {
+        padding: 5px;
+      }
+
+      >thead>tr>th,
+      >tbody>tr>td {
+        border: 1px solid $border-color;
+        text-align: left;
+      }
+    }
+  }
+
+  .column-head {
+    @include clearfix;
+
+    .title {
+      padding: 5px;
+
+      &.sortable {
+        cursor: pointer;
+
+        &.up:after,
+        &.down:after {
+          margin: 0 2px;
+        }
+
+        &.up:after {
+          content: '↑';
+        }
+
+        &.down:after {
+          content: '↓';
+        }
+      }
+    }
+
+    &:hover .column-select,
+    .column-select.expanded {
+      opacity: 1;
+    }
+
+    .column-select {
+      float: right;
+      position: relative;
+      opacity: 0;
+      border-left: 1px solid lighten($head-background-color,5);
+
+      .toggle {
+        @include no-content;
+
+        display: block;
+        width: 12px;
+        padding: 5px;
+        border: none;
+        background: url(../../images/ddn.png) no-repeat center;
+      }
+
+      .list-view {
+        $background-color: rgb(238, 238, 238);
+        $border-color: rgb(204,204,204);
+        $hover-background-color: rgb(213,239,252);
+        $hover-border-color: rgb(168,216,235);
+
+        position: absolute;
+        left: 0;
+        list-style: none;
+        margin: 0;
+        padding: 1px;
+        z-index: 1001;
+        white-space: nowrap;
+        font-weight: normal;
+        font-size: 100% * 0.8;
+        border: 1px solid $border-color;
+        background-color: $background-color;
+
+        >li,
+        >li:before {
+          padding: 2px 3px;
+        }
+
+        >li {
+          padding-right: 0.5em;
+          min-width: 10em;
+          border: 1px solid transparent;
+        }
+
+        >li:before {
+          opacity: 0;
+          content: '√';
+          padding-left: 0.5em;
+          padding-right: 0.5em;
+          margin-right: 0.5em;
+          border-right: 1px solid $border-color;
+        }
+
+        >li.selected:before {
+          opacity: 1;
+        }
+
+        >li:hover {
+          background-color: $hover-background-color;
+          border-color: $hover-border-color;
+        }
+      }
+    }
+  }
+
+  .control-panel {
+    $input-border-color: rgb(127,127,127);
+
+    input,
+    select {
+      @include inset-box-shadow(lighten($input-border-color,5));
+
+      display: inline-block;
+      border: 1px solid $input-border-color;
+      padding: 1px;
+      border-radius: 4px;
+      outline: none;
+
+      &:hover,
+      &:active {
+        outline: none;
+      }
+    }
+
+    .pagination-panel {
+      @include clearfix;
+
+      $background-color: rgb(57,57,57);
+      $color: #9FB100;
+
+      padding: 8px 5px;
+      background: $background-color;
+      color: $color;
+
+      button {
+        @include no-content;
+
+        border: 1px inset transparent;
+        background: none;
+        outline: none;
+        display: inline-block;
+        width: 22px;
+      }
+
+      button:hover,
+      button:active {
+        border-color: #ADADAD;
+        outline: none;
+      }
+
+      @each $c in search,first,previous,next,last,refresh {
+        button.#{$c} {
+          background: url(../../images/#{$c}.png) no-repeat center center;
+        }
+      }
+
+      .summary {
+        float: right;
+      }
+
+      input {
+        color: black;
+        width: 44px;
+        margin: 0 5px;
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+    }
+
+    .filter-panel {
+      $background-color: rgb(237,237,237);
+
+      background-color: $background-color;
+      overflow: hidden;
+
+      .wrapper {
+        padding: 5px;
+      }
+
+      input,
+      select {
+        width: 207px;
+      }
+
+      input {
+        margin-left: 5px;
+      }
+      select {
+        margin-left: 8px;
+      }
+
+      &.filter-panel-enter {
+        height: 0;
+
+        &-active {
+          height: 32px;
+          transition: height .5s ease-in;
+        }
+      }
+
+      &.filter-panel-leave {
+        height: 32px;
+
+        &-active {
+          height: 0;
+          transition: height .5s ease-in;
+        }
+      }
+    }
+  }
+}

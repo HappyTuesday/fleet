@@ -15,7 +15,7 @@ var FakeDB = function(){
     return {
       sid: i,
       vehicleID: "veh-"+i,
-      vin: Math.round(Math.random()*10000),
+      vim: Math.round(Math.random()*10000),
       type: this.vehicleTypes[(i-1) % this.vehicleTypes.length],
       enabled: i % 5 != 0,
       modifiedDate: new Date()
@@ -39,9 +39,15 @@ FakeDB.prototype.userDataSource = function(filter,callback){
 
 FakeDB.prototype.vehicleDataSource = function(filter,callback){
   console.debug("vehicle-table is visited");
-  var matchedRows = this.vehicleTable.filter(function(row){
-    return row[filter.filterColumn].indexOf(filter.key) >= 0;
-  });
+  console.debug(filter);
+  var matchedRows;
+  if(filter.filterColumn){
+    matchedRows = this.vehicleTable.filter(function(row){
+      return row[filter.filterColumn].indexOf(filter.key) >= 0;
+    });
+  }else{
+    matchedRows = this.vehicleTable;
+  }
   if(filter.orderbyColumn){
     var matchedRows = _.orderby(matchedRows,function(row){
       return row[filter.orderbyColumn];
@@ -60,14 +66,18 @@ var App = React.createClass({
   db: new FakeDB(),
   render: function(){
     return (
-      <div className="demo">
-        <h2>Here is the demo for auto-complate control</h2>
-        <AutoCompleteWithPopup dataSource={this.userDataSource} getItemKey={this.getUserKey} getItemView={this.getUserView} getItemFilter={this.getUserFilter} />
+      <div className="app">
+        <div className="demo">
+          <h2>Here is the demo for auto-complate control</h2>
+          <AutoCompleteWithPopup dataSource={this.userDataSource} getItemKey={this.getUserKey} getItemView={this.getUserView} getItemFilter={this.getUserFilter} />
+        </div>
+        <div className="demo">
+          <h2>Here is the demo for datagrid control</h2>
+          <DefaultDataGrid dataSource={this.vehicleDataSource}
+            columns={this.vehicleColumns}
+            specialColumnRenders={{modifiedDate: this.renderDate}} />
+        </div>
       </div>
-      <div className="demo">
-        <h2>Here is the demo for datagrid control</h2>
-        <DefaultDataGrid dataSource={this.vehicleDataSource} columns={this.vehicleColumns} />
-      </dvi>
     );
   },
   getUserKey: function(user){
@@ -79,15 +89,21 @@ var App = React.createClass({
   getUserFilter: function(user,filter){
     return user.name.indexOf(filter.key) >= 0;
   },
+  renderDate: function(date){
+    return <span>{date.toDateString()}</span>;
+  },
   userDataSource: function(filter,callback){
-    this.db.userDataSource(filter,callback);
+    return this.db.userDataSource(filter,callback);
+  },
+  vehicleDataSource: function(filter,callback){
+    return this.db.vehicleDataSource(filter,callback);
   },
   vehicleColumns: [
     {name: 'sid', title: 'SID', sortable: true},
-    {name: 'vehicleID', tilte: 'Vehicle ID', sortable: true, searchable: true},
-    {name: 'vim', title: 'VIM', sortable: true, searchable: true},
+    {name: 'vehicleID', title: 'Vehicle ID', sortable: true, searchable: true},
+    {name: 'vim', title: 'VIM', sortable: true},
     {name: 'type', title: 'Type', sortable: true, searchable: true},
-    {name: 'enabled', title: 'Enabled', sortable: true, searchable: true},
+    {name: 'enabled', title: 'Enabled', sortable: true},
     {name: 'modifiedDate', title: 'Modified Date', sortable: true}
   ]
 });

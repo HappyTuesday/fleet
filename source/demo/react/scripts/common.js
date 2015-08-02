@@ -23,16 +23,16 @@ _.except = function(a,b){
   return result;
 }
 
-_.orderby = function(a,fn,desc=false){
+_.orderby = function(a,fn,desc){
   var b = [];
   for(var i=0;i<a.length;i++){
     b[i] = a[i];
     var value = fn(b[i]);
     for(var j=i-1;j>=0;j--){
-      if(desc ? value > fn(b[i]) : value < fn(b[i])){
-        var t = b[i];
-        b[i] = b[i+1];
-        b[i+1] = t;
+      if(desc ? value > fn(b[j]) : value < fn(b[j])){
+        var t = b[j];
+        b[j] = b[j+1];
+        b[j+1] = t;
       }else{
         break;
       }
